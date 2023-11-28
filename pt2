@@ -1,0 +1,20 @@
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class TestSaudacao {
+
+    @Test
+    public void testSaudacaoPadrao() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {};  // ou forneça alguns nomes aqui
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, meu amigo!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomeNull() {
+        Saudacao saudacaoObj = new Saudacao();
+        String resultado = saudacaoObj.saudacao(null);
+        assertEquals("Olá, meu amigo!", resultado);
+    }
+}
