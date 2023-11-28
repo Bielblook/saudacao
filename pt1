@@ -1,0 +1,70 @@
+public class Saudacao {
+    public String saudacao(String[] nomes) {
+        if (nomes == null || nomes.length == 0) {
+            return "Olá, meu amigo!";
+        } else if (nomes.length == 1) {
+            return processaSaudacaoIndividual(nomes[0]);
+        } else {
+            return processaSaudacaoMultipla(nomes);
+        }
+    }
+
+    private String processaSaudacaoIndividual(String nome) {
+        if (nome == null) {
+            return "Olá, meu amigo!";
+        } else if (nome.equals(nome.toUpperCase())) {
+            return "OLÁ, " + nome + "!";
+        } else {
+            return "Olá, " + nome + "!";
+        }
+    }
+
+    private String processaSaudacaoMultipla(String[] nomes) {
+        StringBuilder saudacao = new StringBuilder("Olá, ");
+        int tamanho = nomes.length;
+
+        for (int i = 0; i < tamanho - 1; i++) {
+            saudacao.append(nomes[i]).append(", ");
+        }
+
+        saudacao.append("e ").append(processaSaudacaoIndividual(nomes[tamanho - 1]));
+
+        return saudacao.toString();
+    }
+
+    public static void main(String[] args) {
+        Saudacao saudacaoObj = new Saudacao();
+
+        // Requisito 1
+        String resultado1 = saudacaoObj.saudacao(new String[]{"Joao"});
+        System.out.println(resultado1);
+
+        // Requisito 2
+        String resultado2 = saudacaoObj.saudacao(new String[]{null});
+        System.out.println(resultado2);
+
+        // Requisito 3
+        String resultado3 = saudacaoObj.saudacao(new String[]{"JOSE"});
+        System.out.println(resultado3);
+
+        // Requisito 4
+        String resultado4 = saudacaoObj.saudacao(new String[]{"Maria", "Laura"});
+        System.out.println(resultado4);
+
+        // Requisito 5
+        String resultado5 = saudacaoObj.saudacao(new String[]{"Ana", "Bruno", "Carlos"});
+        System.out.println(resultado5);
+
+        // Requisito 6
+        String resultado6 = saudacaoObj.saudacao(new String[]{"Ana", "BRUNO", "Carlos"});
+        System.out.println(resultado6);
+
+        // Requisito 7
+        String resultado7 = saudacaoObj.saudacao(new String[]{"Joao", "Marcos, Daiane"});
+        System.out.println(resultado7);
+
+        // Requisito 8
+        String resultado8 = saudacaoObj.saudacao(new String[]{"Joao", "\"Marcos, Daiane\""});
+        System.out.println(resultado8);
+    }
+}
