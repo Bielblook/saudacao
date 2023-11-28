@@ -1,0 +1,68 @@
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class TestSaudacao {
+
+    @Test
+    public void testSaudacaoPadrao() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, meu amigo!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomeNull() {
+        Saudacao saudacaoObj = new Saudacao();
+        String resultado = saudacaoObj.saudacao(null);
+        assertEquals("Olá, meu amigo!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomeGritando() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"JOSE"};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("OLÁ, JOSE!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComDoisNomes() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"Maria", "Laura"};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, Maria e Laura!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComMaisDeDoisNomes() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"Ana", "Bruno", "Carlos"};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, Ana, Bruno, e Carlos!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomesNormaisEGritados() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"Ana", "BRUNO", "Carlos"};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, Ana e Carlos! E OLÁ BRUNO!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomesComVirgula() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"Joao", "Marcos, Daiane"};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, Joao, Marcos, e Daiane!", resultado);
+    }
+
+    @Test
+    public void testSaudacaoComNomesComVirgulaEscapada() {
+        Saudacao saudacaoObj = new Saudacao();
+        String[] nomes = {"Joao", "\"Marcos, Daiane\""};
+        String resultado = saudacaoObj.saudacao(nomes);
+        assertEquals("Olá, Joao e Marcos, Daiane!", resultado);
+    }
+}
